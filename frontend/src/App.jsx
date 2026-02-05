@@ -8,7 +8,13 @@ import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import Chatbot from './pages/Chatbot';
 import Applications from './pages/Applications';
+import About from './pages/About';
+import Contact from './pages/Contact';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminJobs from './pages/AdminJobs';
+import JobRecommendations from './pages/JobRecommendations';
+import ApplicantsManagement from './pages/ApplicantsManagement';
+import FloatingChatbot from './components/FloatingChatbot';
 
 function App() {
     return (
@@ -31,6 +37,21 @@ function App() {
                             <Profile />
                         </ProtectedRoute>
                     } />
+                    <Route path="/student/chatbot" element={
+                        <ProtectedRoute allowedRoles={['student']}>
+                            <Chatbot />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/student/applications" element={
+                        <ProtectedRoute allowedRoles={['student']}>
+                            <Applications />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/student/recommendations" element={
+                        <ProtectedRoute allowedRoles={['student']}>
+                            <JobRecommendations />
+                        </ProtectedRoute>
+                    } />
 
                     {/* Admin Protected Routes */}
                     <Route path="/admin/dashboard" element={
@@ -38,11 +59,22 @@ function App() {
                             <AdminDashboard />
                         </ProtectedRoute>
                     } />
+                    <Route path="/admin/jobs" element={
+                        <ProtectedRoute allowedRoles={['admin']}>
+                            <AdminJobs />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/admin/applicants" element={
+                        <ProtectedRoute allowedRoles={['admin']}>
+                            <ApplicantsManagement />
+                        </ProtectedRoute>
+                    } />
 
-                    <Route path="/about" element={<div className="p-20 text-center text-gray-500">About Page (Coming Soon)</div>} />
-                    <Route path="/contact" element={<div className="p-20 text-center text-gray-500">Contact Page (Coming Soon)</div>} />
-                    <Route path="/admin/jobs" element={<div className="p-20 text-center text-gray-500">Admin Jobs Page (Coming Soon)</div>} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+
                 </Routes>
+                <FloatingChatbot />
             </div>
         </div>
     );

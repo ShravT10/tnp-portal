@@ -10,3 +10,9 @@ export const updateProfile = async (profileData) => {
     const response = await api.post(`/students/profile?${params.toString()}`);
     return response.data;
 };
+
+export const getAllStudents = async () => {
+    const response = await api.get('/students/all');
+    return response.data;
+};
+

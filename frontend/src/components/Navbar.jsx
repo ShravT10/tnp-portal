@@ -25,8 +25,11 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        ...(user?.role === 'student' ? [{ name: 'Jobs', path: '/student/jobs' }] : []),
-        ...(user?.role === 'admin' ? [{ name: 'Dashboard', path: '/admin/dashboard' }] : []),
+        ...(user?.role === 'student' ? [
+            { name: 'Jobs', path: '/student/jobs' },
+            { name: 'My Applications', path: '/student/applications' }
+        ] : []),
+        ...(user?.role === 'admin' ? [{ name: 'Dashboard', path: '/admin/dashboard' }, { name: 'Applicants', path: '/admin/applicants' }] : []),
         { name: 'About', path: '/about' },
         { name: 'Contact', path: '/contact' },
     ];
